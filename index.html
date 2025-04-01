@@ -1,104 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Mobile Recharge</title>
+    <title>Win 500 Rupees!</title>
     <style>
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #4facfe, #00f2fe);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            margin-top: 10%;
         }
         #container {
-            background: rgba(255, 255, 255, 0.2);
+            background-color: #f8f8f8;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(5px);
-        }
-        h2 {
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
-        #form {
-            display: block;
-        }
-        #message {
-            display: none;
-            font-size: 30px;
-            color: yellow;
-            font-weight: bold;
+            box-shadow: 0px 0px 10px gray;
+            display: inline-block;
         }
         input, button {
             padding: 10px;
-            margin: 10px;
-            font-size: 18px;
-            border: none;
-            border-radius: 5px;
-        }
-        input {
-            width: 250px;
-            text-align: center;
-        }
-        button {
-            background: #ffcc00;
-            color: black;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        button:hover {
-            background: #ff9900;
-        }
-        #giftButton {
-            display: none;
-            font-size: 20px;
-            background: #00cc00;
-            margin-top: 20px;
-        }
-        #giftText {
-            display: none;
-            font-size: 24px;
-            color: white;
-            font-weight: bold;
-            margin-top: 20px;
+            font-size: 16px;
+            margin: 5px;
         }
     </style>
-</head>
-<body>
-    <div id="container">
-        <h2>Claim Your Free ₹500 Mobile Recharge!</h2>
-        <div id="form">
-            <input type="text" id="phone" placeholder="Enter Your Mobile Number" maxlength="10">
-            <button onclick="submitForm()">Claim Now</button>
-        </div>
-        <div id="message">APRIL FOOL! 😂 Ullu bnaya bada maza aaya!</div>
-        <button id="giftButton" onclick="showGift()">Gift from Gaurish 🎁</button>
-        <div id="giftText">APRIL FOOL! 😂 Ullu bnaya bada maza aaya!</div>
-    </div>
-
     <script>
-        function submitForm() {
-            let phone = document.getElementById("phone").value;
-            if (phone.length === 10 && !isNaN(phone)) {
-                document.getElementById("form").style.display = "none";
-                document.getElementById("message").style.display = "block";
-                document.getElementById("giftButton").style.display = "block";
+        function checkNumber() {
+            let number = document.getElementById("phone").value;
+            if (number.length === 10 && !isNaN(number)) {
+                alert("Congratulations! You have won 500 Rupees!");
+                setTimeout(() => {
+                    alert("Just kidding! You've been pranked! ");
+                }, 2000);
             } else {
                 alert("Please enter a valid 10-digit number.");
             }
         }
-
-        function showGift() {
-            document.getElementById("giftText").style.display = "block";
-            document.getElementById("giftButton").style.display = "none"; // Hide the "Gift from Gaurish" button
-        }
     </script>
+</head>
+<body>
+    <div id="container">
+        <h2>Enter Your Mobile Number to Get 500 Instantly!</h2>
+        <input type="text" id="phone" placeholder="Enter your number">
+        <br>
+        <button onclick="checkNumber()">Claim Now</button>
+    </div>
 </body>
 </html>
