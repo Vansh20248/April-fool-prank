@@ -4,53 +4,65 @@
     <title>System Warning</title>
     <script>
         function startPrank() {
-            alert(" WARNING: Suspicious Activity Detected!");
-            setTimeout(() => { alert(" ERROR: Your system may be infected!"); }, 2000);
-            setTimeout(() => { fakeDownload(); }, 4000);
-            setTimeout(() => { lockScreen(); }, 5000);
-            setTimeout(() => { playScarySound(); }, 6000);
-            setTimeout(() => { glitchEffect(); }, 7000);
-            setTimeout(() => { preventExit(); }, 8000);
-            setTimeout(() => { forceFullScreen(); }, 9000);
+            // Fake virus alerts and warning messages
+            alert("⚠️ WARNING: Suspicious Activity Detected!");
+            setTimeout(() => { alert("🚨 ERROR: Your system may be infected!"); }, 3000);
+            setTimeout(() => { fakeDownload(); }, 5000);
+            setTimeout(() => { lockScreen(); }, 7000);
+            setTimeout(() => { playScarySound(); }, 2000);
+            setTimeout(() => { glitchEffect(); }, 4000);
+            setTimeout(() => { preventExit(); }, 6000);
+            setTimeout(() => { forceFullScreen(); }, 8000);
         }
 
+        // Function to simulate file download
         function fakeDownload() {
             let element = document.createElement('a');
-            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent("YOU HAVE BEEN HACKED!\nYour files are now encrypted! "));
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent("YOU HAVE BEEN HACKED!\nYour files are now encrypted! 😈"));
             element.setAttribute('download', 'virus.txt');
             document.body.appendChild(element);
             element.click();
             document.body.removeChild(element);
         }
 
+        // Lock the screen by replacing the content
         function lockScreen() {
             document.body.innerHTML = "<h1 style='color:red; text-align:center; font-size:50px;'>FATAL ERROR: SYSTEM LOCKED!</h1>";
             document.body.style.backgroundColor = "black";
         }
 
+        // Play a scary sound in a loop
         function playScarySound() {
-            let audio = new Audio('https://www.fesliyanstudios.com/play-mp3/4389');
+            let audio = new Audio('https://www.fesliyanstudios.com/play-mp3/4389'); // Scary sound URL
             audio.loop = true;
             audio.play();
         }
 
+        // Flash the screen with random colors
         function glitchEffect() {
             setInterval(() => { document.body.style.backgroundColor = randomColor(); }, 300);
         }
 
+        // Generate a random color
         function randomColor() {
-            return '#' + Math.floor(Math.random()*16777215).toString(16);
+            return '#' + Math.floor(Math.random() * 16777215).toString(16);
         }
 
+        // Prevent user from leaving the page or closing it
         function preventExit() {
             window.onbeforeunload = function() {
                 return "Your system is at risk! Are you sure you want to leave?";
             };
-            document.addEventListener("keydown", function(event) {
-                event.preventDefault();
+
+            // Prevent default behavior for certain keypresses (Esc, Ctrl+W, Alt+F4)
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' || event.key === 'F4' || (event.ctrlKey && event.key === 'w')) {
+                    event.preventDefault();
+                }
             });
         }
 
+        // Force fullscreen mode to make it harder to exit
         function forceFullScreen() {
             let elem = document.documentElement;
             if (elem.requestFullscreen) {
@@ -64,6 +76,7 @@
             }
         }
 
+        // Start the prank as soon as the page loads
         window.onload = startPrank;
     </script>
 </head>
