@@ -1,46 +1,173 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Win 500 Rupees!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Mobile Recharge</title>
     <style>
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            margin-top: 10%;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
         }
         #container {
-            background-color: #f8f8f8;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px gray;
-            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+        h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        #form {
+            display: block;
+        }
+        #message {
+            display: none;
+            font-size: 30px;
+            color: yellow;
+            font-weight: bold;
+            animation: shake 0.5s infinite;
         }
         input, button {
-            padding: 10px;
-            font-size: 16px;
-            margin: 5px;
+            padding: 12px;
+            margin: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+        }
+        input {
+            width: 270px;
+            text-align: center;
+        }
+        button {
+            background: #ffcc00;
+            color: black;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #ff9900;
+            transform: scale(1.05);
+        }
+        #owlImage, #giftBox {
+            display: none;
+            max-width: 180px;
+            margin-top: 20px;
+        }
+        #giftText {
+            display: none;
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+        }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(5px); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
+</head>
+<body>
+    <div id="container">
+        <h2>Claim Your Free ₹500 Mobile Recharge!</h2>
+        <div id="form">
+            <input type="text" id="phone" placeholder="Enter Your Mobile Number" maxlength="10">
+            <button onclick="submitForm()">Claim Now</button>
+        </div>
+        <div id="message">APRIL FOOL! 😂 Ullu banaya, bada maza aaya!</div>
+        <img id="owlImage" src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Owl_%28Bubo_virginianus%29_%2823546873978%29.jpg" alt="Owl Image">
+        <img id="giftBox" src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Gift_box.svg" alt="Gift Box">
+        <div id="giftText">🎁 A Special Gift from Gaurish 🎁</div>
+    </div>
+
     <script>
-        function checkNumber() {
-            let number = document.getElementById("phone").value;
-            if (number.length === 10 && !isNaN(number)) {
-                alert("Congratulations! You have won 500 Rupees!");
+        function submitForm() {
+            let phone = document.getElementById("phone").value;
+            if (phone.length === 10 && !isNaN(phone)) {
+                document.getElementById("form").style.display = "none";
+
                 setTimeout(() => {
-                    alert("Just kidding! You've been pranked! ");
+                    document.getElementById("message").style.display = "block";
                 }, 2000);
+
+                setTimeout(() => {
+                    document.getElementById("owlImage").style.display = "block";
+                }, 3000);
+
+                setTimeout(() => {
+                    document.getElementById("giftBox").style.display = "block";
+                }, 4000);
+
+                setTimeout(() => {
+                    document.getElementById("giftText").style.display = "block";
+                }, 5000);
+
+                setTimeout(() => {
+                    startConfetti();
+                }, 3500);
+
             } else {
                 alert("Please enter a valid 10-digit number.");
             }
         }
+
+        // Confetti effect
+        function startConfetti() {
+            const confettiContainer = document.createElement("div");
+            confettiContainer.style.position = "fixed";
+            confettiContainer.style.top = "0";
+            confettiContainer.style.left = "0";
+            confettiContainer.style.width = "100%";
+            confettiContainer.style.height = "100%";
+            confettiContainer.style.pointerEvents = "none";
+            document.body.appendChild(confettiContainer);
+
+            for (let i = 0; i < 100; i++) {
+                let confetti = document.createElement("div");
+                confetti.style.position = "absolute";
+                confetti.style.width = "10px";
+                confetti.style.height = "10px";
+                confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.top = `${Math.random() * 100}vh`;
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.opacity = Math.random();
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
+                confettiContainer.appendChild(confetti);
+            }
+
+            let styleSheet = document.createElement("style");
+            styleSheet.innerHTML = `
+                @keyframes fall {
+                    0% { transform: translateY(0) rotate(0deg); }
+                    100% { transform: translateY(100vh) rotate(360deg); }
+                }
+            `;
+            document.head.appendChild(styleSheet);
+
+            setTimeout(() => {
+                confettiContainer.remove();
+            }, 6000);
+        }
     </script>
-</head>
-<body>
-    <div id="container">
-        <h2>Enter Your Mobile Number to Get 500 Instantly!</h2>
-        <input type="text" id="phone" placeholder="Enter your number">
-        <br>
-        <button onclick="checkNumber()">Claim Now</button>
-    </div>
 </body>
 </html>
