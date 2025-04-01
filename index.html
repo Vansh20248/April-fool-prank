@@ -2,82 +2,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System Breach Detected</title>
+    <title>Free Mobile Recharge</title>
     <style>
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            background-color: black;
-            color: green;
+            background-color: white;
+            color: black;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
-        #hacking {
-            font-size: 24px;
-            font-weight: bold;
-            white-space: pre-line;
+        #form {
+            display: block;
         }
         #message {
             display: none;
-            font-size: 50px;
+            font-size: 30px;
             color: red;
         }
-        img {
-            display: none;
-            max-width: 80%;
-            height: auto;
-        }
-        #fixButton {
-            display: none;
-            margin-top: 20px;
-            padding: 10px 20px;
+        input, button {
+            padding: 10px;
+            margin: 5px;
             font-size: 18px;
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
+        }
+        #owlImage {
+            display: none;
+            max-width: 200px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <div id="hacking">Initializing System Security Scan...</div>
-    <div id="message">APRIL FOOL! </div>
-    <img id="prankImage" src="https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif" alt="April Fool GIF">
-    <audio id="prankAudio" src="https://www.myinstants.com/media/sounds/trollololol.mp3"></audio>
-    <button id="fixButton" onclick="playPrank()">Fix Now</button>
+    <h2>Claim Your Free ₹500 Mobile Recharge!</h2>
+    <div id="form">
+        <input type="text" id="phone" placeholder="Enter Your Mobile Number" maxlength="10">
+        <button onclick="submitForm()">Claim Now</button>
+    </div>
+    <div id="message">APRIL FOOL! 😂 Ullu bnaya bada maza aaya!</div>
+    <img id="owlImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Asio_otus_1_%28Martin_Mecnarowski%29.jpg/220px-Asio_otus_1_%28Martin_Mecnarowski%29.jpg" alt="Owl Image">
     <script>
-        let hackingText = document.getElementById('hacking');
-        let messages = [
-            "Initializing System Security Scan...",
-            "Scanning for vulnerabilities...",
-            "Unauthorized access detected!",
-            "Attempting to block malicious activity...",
-            "Error! System Breach in Progress...",
-            "Deploying countermeasures..."
-        ];
-        let index = 0;
-        function updateText() {
-            if (index < messages.length) {
-                hackingText.innerHTML = messages[index];
-                index++;
-                setTimeout(updateText, 2000);
+        function submitForm() {
+            let phone = document.getElementById("phone").value;
+            if (phone.length === 10 && !isNaN(phone)) {
+                document.getElementById("form").style.display = "none";
+                document.getElementById("message").style.display = "block";
+                document.getElementById("owlImage").style.display = "block";
             } else {
-                hackingText.style.display = 'none';
-                document.getElementById('message').style.display = 'block';
-                document.getElementById('prankImage').style.display = 'block';
-                document.getElementById('fixButton').style.display = 'block';
+                alert("Please enter a valid 10-digit number.");
             }
         }
-        function playPrank() {
-            let audio = document.getElementById('prankAudio');
-            audio.play();
-            document.getElementById('fixButton').innerText = "Error! Try Again";
-            document.getElementById('fixButton').style.backgroundColor = "black";
-        }
-        setTimeout(updateText, 1000);
     </script>
 </body>
 </html>
