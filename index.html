@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System Hacked!</title>
+    <title>System Breach Detected</title>
     <style>
         body {
             text-align: center;
@@ -18,6 +18,7 @@
         #hacking {
             font-size: 24px;
             font-weight: bold;
+            white-space: pre-line;
         }
         #message {
             display: none;
@@ -32,17 +33,40 @@
     </style>
 </head>
 <body>
-    <div id="hacking">HACKING IN PROGRESS...<br>Please Wait...</div>
-    <div id="message">APRIL FOOL! </div>
+    <div id="hacking">Initializing System Security Scan...
+Scanning for vulnerabilities...
+Unauthorized access detected!
+Attempting to block malicious activity...
+Error! System Breach in Progress...
+Deploying countermeasures...
+</div>
+    <div id="message">APRIL FOOL! 😂</div>
     <img id="prankImage" src="https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif" alt="April Fool GIF">
-    <audio id="prankAudio" src="https://www.myinstants.com/media/sounds/trollololol.mp3"></audio><script>
-    setTimeout(() => {
-        document.getElementById('hacking').style.display = 'none';
-        document.getElementById('message').style.display = 'block';
-        document.getElementById('prankImage').style.display = 'block';
-        document.getElementById('prankAudio').play();
-    }, 5000);
-</script>
-
+    <audio id="prankAudio" src="https://www.myinstants.com/media/sounds/trollololol.mp3"></audio>
+    <script>
+        let hackingText = document.getElementById('hacking');
+        let messages = [
+            "Initializing System Security Scan...",
+            "Scanning for vulnerabilities...",
+            "Unauthorized access detected!",
+            "Attempting to block malicious activity...",
+            "Error! System Breach in Progress...",
+            "Deploying countermeasures..."
+        ];
+        let index = 0;
+        function updateText() {
+            if (index < messages.length) {
+                hackingText.innerHTML = messages[index];
+                index++;
+                setTimeout(updateText, 2000);
+            } else {
+                hackingText.style.display = 'none';
+                document.getElementById('message').style.display = 'block';
+                document.getElementById('prankImage').style.display = 'block';
+                document.getElementById('prankAudio').play();
+            }
+        }
+        setTimeout(updateText, 1000);
+    </script>
 </body>
 </html>
