@@ -16,6 +16,7 @@
             align-items: center;
             height: 100vh;
             overflow: hidden;
+            position: relative;
         }
         #container {
             background: rgba(255, 255, 255, 0.2);
@@ -38,7 +39,7 @@
             font-size: 30px;
             color: yellow;
             font-weight: bold;
-            animation: shake 0.5s infinite;
+            animation: bounceIn 1s ease-in-out;
         }
         input, button {
             padding: 12px;
@@ -62,27 +63,30 @@
             background: #ff9900;
             transform: scale(1.05);
         }
-        #owlImage, #giftBox {
+        #giftBox {
             display: none;
-            max-width: 180px;
-            margin-top: 20px;
-        }
-        #giftText {
-            display: none;
-            font-size: 24px;
-            color: white;
+            background: #ffcc00;
+            color: black;
             font-weight: bold;
-        }
-        @keyframes shake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-            100% { transform: translateX(5px); }
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: 22px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            animation: bounce 1s ease-in-out infinite;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
@@ -93,37 +97,43 @@
             <input type="text" id="phone" placeholder="Enter Your Mobile Number" maxlength="10">
             <button onclick="submitForm()">Claim Now</button>
         </div>
+        <div id="giftBox">🎁 Congratulations! You have won ₹500 Recharge! 🎁</div>
         <div id="message">APRIL FOOL! 😂 Ullu banaya, bada maza aaya!</div>
-        <img id="owlImage" src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Owl_%28Bubo_virginianus%29_%2823546873978%29.jpg" alt="Owl Image">
-        <img id="giftBox" src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Gift_box.svg" alt="Gift Box">
-        <div id="giftText">🎁 A Special Gift from Gaurish 🎁</div>
     </div>
 
     <script>
+        let audio = new Audio('https://www.soundjay.com/button/beep-07.wav');  // Beep sound for April Fool
+
         function submitForm() {
             let phone = document.getElementById("phone").value;
             if (phone.length === 10 && !isNaN(phone)) {
                 document.getElementById("form").style.display = "none";
-
-                setTimeout(() => {
-                    document.getElementById("message").style.display = "block";
-                }, 2000);
-
-                setTimeout(() => {
-                    document.getElementById("owlImage").style.display = "block";
-                }, 3000);
-
+                
+                // Show the gift box after 2 seconds
                 setTimeout(() => {
                     document.getElementById("giftBox").style.display = "block";
+                }, 2000);
+
+                // Show the special gift message after 4 seconds
+                setTimeout(() => {
+                    document.getElementById("giftBox").innerHTML = "🎁 A Special Gift from Gaurish! 🎁";
                 }, 4000);
 
+                // Play beep sound after 4 seconds
                 setTimeout(() => {
-                    document.getElementById("giftText").style.display = "block";
-                }, 5000);
+                    audio.play();
+                }, 4000);
 
+                // Show the "April Fool" message after 10 seconds
+                setTimeout(() => {
+                    document.getElementById("giftBox").style.display = "none";
+                    document.getElementById("message").style.display = "block";
+                }, 10000);
+
+                // Start confetti after 8 seconds
                 setTimeout(() => {
                     startConfetti();
-                }, 3500);
+                }, 8000);
 
             } else {
                 alert("Please enter a valid 10-digit number.");
@@ -166,7 +176,7 @@
 
             setTimeout(() => {
                 confettiContainer.remove();
-            }, 6000);
+            }, 10000);
         }
     </script>
 </body>
