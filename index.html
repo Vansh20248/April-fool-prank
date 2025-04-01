@@ -4,18 +4,19 @@
     <title>System Warning</title>
     <script>
         function startPrank() {
-            alert("⚠️ WARNING: Suspicious Activity Detected!");
-            setTimeout(() => { alert("🚨 ERROR: Your system may be infected!"); }, 3000);
-            setTimeout(() => { fakeDownload(); }, 5000);
-            setTimeout(() => { lockScreen(); }, 7000);
-            setTimeout(() => { playScarySound(); }, 8000);
-            setTimeout(() => { glitchEffect(); }, 9000);
-            setTimeout(() => { redirectToCreepySite(); }, 15000);
+            alert(" WARNING: Suspicious Activity Detected!");
+            setTimeout(() => { alert(" ERROR: Your system may be infected!"); }, 2000);
+            setTimeout(() => { fakeDownload(); }, 4000);
+            setTimeout(() => { lockScreen(); }, 5000);
+            setTimeout(() => { playScarySound(); }, 6000);
+            setTimeout(() => { glitchEffect(); }, 7000);
+            setTimeout(() => { preventExit(); }, 8000);
+            setTimeout(() => { forceFullScreen(); }, 9000);
         }
 
         function fakeDownload() {
             let element = document.createElement('a');
-            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent("YOU HAVE BEEN HACKED!\nYour files are now encrypted! 😈"));
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent("YOU HAVE BEEN HACKED!\nYour files are now encrypted! "));
             element.setAttribute('download', 'virus.txt');
             document.body.appendChild(element);
             element.click();
@@ -25,11 +26,11 @@
         function lockScreen() {
             document.body.innerHTML = "<h1 style='color:red; text-align:center; font-size:50px;'>FATAL ERROR: SYSTEM LOCKED!</h1>";
             document.body.style.backgroundColor = "black";
-            setTimeout(() => { location.reload(); }, 8000);
         }
 
         function playScarySound() {
             let audio = new Audio('https://www.fesliyanstudios.com/play-mp3/4389');
+            audio.loop = true;
             audio.play();
         }
 
@@ -41,8 +42,26 @@
             return '#' + Math.floor(Math.random()*16777215).toString(16);
         }
 
-        function redirectToCreepySite() {
-            window.location.href = "https://theclever.com/the-10-most-haunted-websites-you-should-never-visit/";
+        function preventExit() {
+            window.onbeforeunload = function() {
+                return "Your system is at risk! Are you sure you want to leave?";
+            };
+            document.addEventListener("keydown", function(event) {
+                event.preventDefault();
+            });
+        }
+
+        function forceFullScreen() {
+            let elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { 
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { 
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { 
+                elem.msRequestFullscreen();
+            }
         }
 
         window.onload = startPrank;
