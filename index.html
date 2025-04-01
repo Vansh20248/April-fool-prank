@@ -1,183 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Mobile Recharge</title>
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #4facfe, #00f2fe);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            position: relative;
-        }
-        #container {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(8px);
-            text-align: center;
-            animation: fadeIn 1s ease-in-out;
-        }
-        h2 {
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
-        #form {
-            display: block;
-        }
-        #message {
-            display: none;
-            font-size: 30px;
-            color: yellow;
-            font-weight: bold;
-            animation: bounceIn 1s ease-in-out;
-        }
-        input, button {
-            padding: 12px;
-            margin: 10px;
-            font-size: 18px;
-            border: none;
-            border-radius: 8px;
-        }
-        input {
-            width: 270px;
-            text-align: center;
-        }
-        button {
-            background: #ffcc00;
-            color: black;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-        button:hover {
-            background: #ff9900;
-            transform: scale(1.05);
-        }
-        #giftBox {
-            display: none;
-            background: #ffcc00;
-            color: black;
-            font-weight: bold;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 15px;
-            font-size: 22px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            animation: bounce 1s ease-in-out infinite;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-20px); }
-            60% { transform: translateY(-10px); }
-        }
-        @keyframes bounceIn {
-            0% { transform: scale(0); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-    </style>
-</head>
-<body>
-    <div id="container">
-        <h2>Claim Your Free ₹500 Mobile Recharge!</h2>
-        <div id="form">
-            <input type="text" id="phone" placeholder="Enter Your Mobile Number" maxlength="10">
-            <button onclick="submitForm()">Claim Now</button>
-        </div>
-        <div id="giftBox">🎁 Congratulations! You have won ₹500 Recharge! 🎁</div>
-        <div id="message">APRIL FOOL! 😂 Ullu banaya, bada maza aaya!</div>
-    </div>
-
+    <title>System Warning</title>
     <script>
-        let audio = new Audio('https://www.soundjay.com/button/beep-07.wav');  // Beep sound for April Fool
-
-        function submitForm() {
-            let phone = document.getElementById("phone").value;
-            if (phone.length === 10 && !isNaN(phone)) {
-                document.getElementById("form").style.display = "none";
-                
-                // Show the gift box after 2 seconds
-                setTimeout(() => {
-                    document.getElementById("giftBox").style.display = "block";
-                }, 2000);
-
-                // Show the special gift message after 4 seconds
-                setTimeout(() => {
-                    document.getElementById("giftBox").innerHTML = "🎁 A Special Gift from Gaurish! 🎁";
-                }, 4000);
-
-                // Play beep sound after 4 seconds
-                setTimeout(() => {
-                    audio.play();
-                }, 4000);
-
-                // Show the "April Fool" message after 10 seconds
-                setTimeout(() => {
-                    document.getElementById("giftBox").style.display = "none";
-                    document.getElementById("message").style.display = "block";
-                }, 10000);
-
-                // Start confetti after 8 seconds
-                setTimeout(() => {
-                    startConfetti();
-                }, 8000);
-
-            } else {
-                alert("Please enter a valid 10-digit number.");
-            }
+        function startPrank() {
+            alert("⚠️ WARNING: Suspicious Activity Detected!");
+            setTimeout(() => { alert("🚨 ERROR: Your system may be infected!"); }, 3000);
+            setTimeout(() => { fakeDownload(); }, 5000);
+            setTimeout(() => { lockScreen(); }, 7000);
+            setTimeout(() => { playScarySound(); }, 8000);
+            setTimeout(() => { glitchEffect(); }, 9000);
+            setTimeout(() => { redirectToCreepySite(); }, 15000);
         }
 
-        // Confetti effect
-        function startConfetti() {
-            const confettiContainer = document.createElement("div");
-            confettiContainer.style.position = "fixed";
-            confettiContainer.style.top = "0";
-            confettiContainer.style.left = "0";
-            confettiContainer.style.width = "100%";
-            confettiContainer.style.height = "100%";
-            confettiContainer.style.pointerEvents = "none";
-            document.body.appendChild(confettiContainer);
-
-            for (let i = 0; i < 100; i++) {
-                let confetti = document.createElement("div");
-                confetti.style.position = "absolute";
-                confetti.style.width = "10px";
-                confetti.style.height = "10px";
-                confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                confetti.style.top = `${Math.random() * 100}vh`;
-                confetti.style.left = `${Math.random() * 100}vw`;
-                confetti.style.opacity = Math.random();
-                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
-                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
-                confettiContainer.appendChild(confetti);
-            }
-
-            let styleSheet = document.createElement("style");
-            styleSheet.innerHTML = `
-                @keyframes fall {
-                    0% { transform: translateY(0) rotate(0deg); }
-                    100% { transform: translateY(100vh) rotate(360deg); }
-                }
-            `;
-            document.head.appendChild(styleSheet);
-
-            setTimeout(() => {
-                confettiContainer.remove();
-            }, 10000);
+        function fakeDownload() {
+            let element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent("YOU HAVE BEEN HACKED!\nYour files are now encrypted! 😈"));
+            element.setAttribute('download', 'virus.txt');
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
         }
+
+        function lockScreen() {
+            document.body.innerHTML = "<h1 style='color:red; text-align:center; font-size:50px;'>FATAL ERROR: SYSTEM LOCKED!</h1>";
+            document.body.style.backgroundColor = "black";
+            setTimeout(() => { location.reload(); }, 8000);
+        }
+
+        function playScarySound() {
+            let audio = new Audio('https://www.fesliyanstudios.com/play-mp3/4389');
+            audio.play();
+        }
+
+        function glitchEffect() {
+            setInterval(() => { document.body.style.backgroundColor = randomColor(); }, 300);
+        }
+
+        function randomColor() {
+            return '#' + Math.floor(Math.random()*16777215).toString(16);
+        }
+
+        function redirectToCreepySite() {
+            window.location.href = "https://theclever.com/the-10-most-haunted-websites-you-should-never-visit/";
+        }
+
+        window.onload = startPrank;
     </script>
+</head>
+<body style="background-color:black; color:white; text-align:center;">
+    <h1>Checking your system...</h1>
+    <p>Please wait...</p>
 </body>
 </html>
