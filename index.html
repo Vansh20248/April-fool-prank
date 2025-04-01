@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,39 +56,48 @@
         button:hover {
             background: #ff9900;
         }
-        #owlImage, #giftBox {
+        #giftButton {
             display: none;
-            max-width: 200px;
+            font-size: 20px;
+            background: #00cc00;
+            margin-top: 20px;
+        }
+        #giftText {
+            display: none;
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <div id="container">
-        <h2>Claim Your Free 500 Mobile Recharge!</h2>
+        <h2>Claim Your Free ₹500 Mobile Recharge!</h2>
         <div id="form">
             <input type="text" id="phone" placeholder="Enter Your Mobile Number" maxlength="10">
             <button onclick="submitForm()">Claim Now</button>
         </div>
-        <div id="message">APRIL FOOL!  Ullu bnaya bada maza aaya!</div>
-        <img id="owlImage" src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Owl_%28Bubo_virginianus%29_%2823546873978%29.jpg" alt="Owl Image">
-        <img id="giftBox" src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Gift_box.svg" alt="Gift Box">
-        <div id="giftText" style="display: none; font-size: 24px; color: white; font-weight: bold;">A Gift from Gaurish </div>
+        <div id="message">APRIL FOOL! 😂 Ullu bnaya bada maza aaya!</div>
+        <button id="giftButton" onclick="showGift()">Gift from Gaurish 🎁</button>
+        <div id="giftText">APRIL FOOL! 😂 Ullu bnaya bada maza aaya!</div>
     </div>
+
     <script>
         function submitForm() {
             let phone = document.getElementById("phone").value;
             if (phone.length === 10 && !isNaN(phone)) {
                 document.getElementById("form").style.display = "none";
                 document.getElementById("message").style.display = "block";
-                document.getElementById("owlImage").style.display = "block";
-                document.getElementById("giftBox").style.display = "block";
-                setTimeout(() => {
-                    document.getElementById("giftText").style.display = "block";
-                }, 1000);
+                document.getElementById("giftButton").style.display = "block";
             } else {
                 alert("Please enter a valid 10-digit number.");
             }
+        }
+
+        function showGift() {
+            document.getElementById("giftText").style.display = "block";
+            document.getElementById("giftButton").style.display = "none"; // Hide the "Gift from Gaurish" button
         }
     </script>
 </body>
