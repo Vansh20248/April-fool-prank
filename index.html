@@ -2,34 +2,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Important Message</title>
+    <title>System Hacked!</title>
     <style>
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: black;
+            color: green;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
-        h1 {
-            color: red;
+        #hacking {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        #message {
+            display: none;
             font-size: 50px;
+            color: red;
         }
         img {
+            display: none;
             max-width: 80%;
             height: auto;
         }
     </style>
 </head>
 <body>
-    <h1>APRIL FOOL! 😂</h1>
-    <img src="https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif" alt="April Fool GIF">
-    <audio autoplay>
-        <source src="https://www.myinstants.com/media/sounds/trollololol.mp3" type="audio/mpeg">
-    </audio>
-    <p>You've been pranked! Share this with your friends. 😆</p>
+    <div id="hacking">HACKING IN PROGRESS...<br>Please Wait...</div>
+    <div id="message">APRIL FOOL! </div>
+    <img id="prankImage" src="https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif" alt="April Fool GIF">
+    <audio id="prankAudio" src="https://www.myinstants.com/media/sounds/trollololol.mp3"></audio><script>
+    setTimeout(() => {
+        document.getElementById('hacking').style.display = 'none';
+        document.getElementById('message').style.display = 'block';
+        document.getElementById('prankImage').style.display = 'block';
+        document.getElementById('prankAudio').play();
+    }, 5000);
+</script>
+
 </body>
 </html>
