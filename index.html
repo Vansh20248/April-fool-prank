@@ -7,13 +7,24 @@
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            background-color: white;
-            color: black;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: white;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
+        }
+        #container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
         }
         #form {
             display: block;
@@ -21,12 +32,28 @@
         #message {
             display: none;
             font-size: 30px;
-            color: red;
+            color: yellow;
+            font-weight: bold;
         }
         input, button {
             padding: 10px;
-            margin: 5px;
+            margin: 10px;
             font-size: 18px;
+            border: none;
+            border-radius: 5px;
+        }
+        input {
+            width: 250px;
+            text-align: center;
+        }
+        button {
+            background: #ffcc00;
+            color: black;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #ff9900;
         }
         #owlImage {
             display: none;
@@ -36,13 +63,15 @@
     </style>
 </head>
 <body>
-    <h2>Claim Your Free ₹500 Mobile Recharge!</h2>
-    <div id="form">
-        <input type="text" id="phone" placeholder="Enter Your Mobile Number" maxlength="10">
-        <button onclick="submitForm()">Claim Now</button>
+    <div id="container">
+        <h2>Claim Your Free ₹500 Mobile Recharge!</h2>
+        <div id="form">
+            <input type="text" id="phone" placeholder="Enter Your Mobile Number" maxlength="10">
+            <button onclick="submitForm()">Claim Now</button>
+        </div>
+        <div id="message">APRIL FOOL! 😂 Ullu bnaya bada maza aaya!</div>
+        <img id="owlImage" src="https://i.imgur.com/ZbJ5RVs.png" alt="Owl Image">
     </div>
-    <div id="message">APRIL FOOL! 😂 Ullu bnaya bada maza aaya!</div>
-    <img id="owlImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Asio_otus_1_%28Martin_Mecnarowski%29.jpg/220px-Asio_otus_1_%28Martin_Mecnarowski%29.jpg" alt="Owl Image">
     <script>
         function submitForm() {
             let phone = document.getElementById("phone").value;
